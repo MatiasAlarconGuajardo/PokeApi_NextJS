@@ -53,7 +53,7 @@ const PokemonCard:React.FC<CardProps>= ({url}) => {
     return null;
 }else{
   return (
-    <div className='  bg-white border border-solid border-bordes shadow-lg shadow-black rounded-lg  items-center m-4 top-8 pt-8 pb-1 w-4/5 h-3/5' onClick={() => setOpenModal(!openModal)}>
+    <div className=' bg-white border border-solid border-bordes shadow-lg shadow-black rounded-lg  items-center m-4 top-8 pt-8 pb-1 w-4/5 h-3/5' onClick={() => setOpenModal(!openModal)}>
       <Image
         className='mx-auto z-1 bottom-20 relative w-24 h-24'
         width={100}
@@ -64,14 +64,14 @@ const PokemonCard:React.FC<CardProps>= ({url}) => {
         priority
         />
         
-        <h2 className='flex  mt-2.5 bottom-20 justify-center text-gray-500 text-sm font-sans'>Nº {pokemon?.id}</h2>
-        <h2 className='flex  bottom-20 justify-center  font-sans mt-0 text-colornombres text-lg font-bold'>{pokemon && pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
+        <h2 className='relative  mt-2.5 bottom-20 justify-center text-gray-500 text-sm font-sans'>Nº {pokemon?.id}</h2>
+        <h2 className='relative bottom-20 justify-center  font-sans mt-0 text-colornombres text-lg font-bold'>{pokemon && pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
         
-        <div className="flex">
+        <div className="flex relative bottom-20 justify-center m-2.5">
           {typeNames?.map((typeName, index) => (
         <div key={index}
-             className={` bottom-20 justify-center font-sans text-white rounded-md w-16 mb-0 ${typeColors[typeName]}`}>
-              <span className="subtitle-position">{typeName}</span>
+             className={`m-2.5 justify-center font-sans text-white rounded-md w-16 mb-0 ${typeColors[typeName]}`}>
+              <span>{typeName}</span>
          </div>
         ))}
         </div>
