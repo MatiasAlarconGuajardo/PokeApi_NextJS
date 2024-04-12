@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { PokemonList } from '@/app/types/types'
 import { getPokemons } from '@/app/api/list';
 import PokemonCard from '../cards/cards';
+import Loading from '../Loading/loading';
 
 const CharacterList = () => {
     const [characters, setCharacters] = useState<PokemonList[]>([]);
@@ -10,21 +11,25 @@ const CharacterList = () => {
     const [loading, setLoading] = useState<boolean>(true);
  
     React.useEffect(()=>{
+      setLoading(true);
         getPokemons.getList(offset)
         .then((response)=>{
-            setLoading(false)
+          setTimeout(() => {
+            setLoading(false);
+          }, 1000);
             setCharacters(response.data.results)
         }).catch((error)=>{
             console.log(error)
         })
     },[offset])
+
   if (loading) {
-    return <div>Cargando...</div>
+    return <Loading/>
   }
   else{
     return (
       <div>
-        <div className=" grid grid-cols-3 grid-rows-3 gap-4 justify-items-center items-center" >
+        <div className=" grid grid-cols-1 grid-rows-3 gap-4 justify-items-center items-center 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1" >
           {
               characters.map((character,index)=>{
                   return(

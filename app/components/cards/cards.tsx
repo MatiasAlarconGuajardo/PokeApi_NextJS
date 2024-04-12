@@ -58,14 +58,15 @@ const PokemonCard:React.FC<CardProps>= ({url}) => {
         className='mx-auto z-1 bottom-20 relative w-24 h-24'
         width={100}
         height={100}
-        src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default || '/public/assets/placeholder.png'} 
+        src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default || '/assets/placeholder.png'} 
         onError={e=>{e.currentTarget.src='../../assets/placeholder.png'}}
         alt={`${pokemon?.name} sprite`}
         priority
+        unoptimized
         />
         
         <h2 className='relative  mt-2.5 bottom-20 justify-center text-gray-500 text-sm font-sans'>Nº {pokemon?.id}</h2>
-        <h2 className='relative bottom-20 justify-center  font-sans mt-0 text-colornombres text-lg font-bold'>{pokemon && pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
+        <h2 className='relative bottom-20 justify-center  font-sans mt-0 text-colornombres text-lg font-bold font-sans'>{pokemon && pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
         
         <div className="flex relative bottom-20 justify-center m-2.5">
           {typeNames?.map((typeName, index) => (

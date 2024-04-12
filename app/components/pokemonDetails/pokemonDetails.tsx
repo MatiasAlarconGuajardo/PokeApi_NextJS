@@ -13,7 +13,7 @@ const PokemonDetails:React.FC<DetailsProps> = ({pokemon,typeName}) => {
     const fetchFlavorText = async () => {
       try {
         
-        const urlFlavor =`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}/`;
+        const urlFlavor =`${process.env.FLAVOR_TEXT_ENDPOINT}${pokemon.id}/`;
         const response = await getPokemons.getData(urlFlavor);
                    
         const data = response.data;
@@ -63,16 +63,17 @@ const PokemonDetails:React.FC<DetailsProps> = ({pokemon,typeName}) => {
 
   
   return (
-    <div className=''>
+    <div>
       <div className={'sprite-position'}>
         
       <Image  
         height={200}
-        width={200}
-        src={pokemon.sprites.other['official-artwork'].front_default}
-        onError={e=>{e.currentTarget.src='../assets/placeholder.png'}}
+        width={200}     
+        src={pokemon.sprites.other['official-artwork'].front_default || '/assets/placeholder.png'}
+        onError={e=>{e.currentTarget.src='/assets/placeholder.png'}}
         alt={`${pokemon.name} sprite`}
         priority
+        unoptimized
         className='mx-auto z-1 relative pb-5 mt-10'
       />
       </div>
@@ -93,7 +94,7 @@ const PokemonDetails:React.FC<DetailsProps> = ({pokemon,typeName}) => {
         ))}
       </div>
 
-      <h4 className='mt-5 mb-2.5 font-bold'  >Descripción:</h4>
+      <h4 className='mt-5 mb-2.5 font-bold mx-auto'  >Descripción:</h4>
       <p className='descriptionText'>{flavorText}</p>
     
       <h4 className='mt-5 mb-2.5 font-bold '>Habilidades:</h4>

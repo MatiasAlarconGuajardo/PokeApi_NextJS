@@ -8,6 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        'shakeAndGrow': "shakeAndGrow 5s infinite",
+      },
+      keyframes: {
+        
+        shakeAndGrow:{
+        '0%, 100%': { transform: 'scale(1.2)', rotate: "0deg" },
+        "10%, 30%, 50%, 70%, 90%": { transform: 'scale(1)', rotate: "20deg" },
+        "20%, 40%, 60%, 80%": { transform: 'scale(1)', rotate: "-20deg" },
+        }    
+      } , 
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
